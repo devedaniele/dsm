@@ -44,14 +44,14 @@
                 return (*this);
             }
 
-            void listen(){
-                (*this).server.PORT = 8767;
+            void listen(int port){
+                (*this).server.PORT = port;
 
                 http _this = (*this);
 
-                (*this).server.listenTo(5,[](Server &srv){
+                (*this).server.listenTo(5,[this](Server &srv){
                     srv.readData();
-                    srv.sendString("Helio World.");                    
+                    srv.sendString((*this).res.toString());
 
                     srv.closeClient();
                 });

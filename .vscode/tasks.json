@@ -8,11 +8,9 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"test/test.cpp",
+				"main.cpp",
 				"-o",
-				"test/test",
-				"&&",
-				"./test/test"
+				"main"
 			],
 			"options": {
 				"cwd": "${workspaceFolder}"

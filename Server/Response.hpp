@@ -41,6 +41,7 @@
             }
         
             void end(string msg){
+                (*this).body = msg;
             }
 
             Response parseType(string type,function<void(Response&)> callback){
@@ -52,7 +53,7 @@
             string toString(){
                 (*this).types[(*this).headers["Content-Type"]]((*this));
 
-                return "\n\n";
+                return (*this).body;
             }
             Response fromString(string request){
                 return (*this);
@@ -61,7 +62,7 @@
         private:
             map<string,string> headers;
             map<string,function<void(Response&)>> types;
-            vector<char> body;
+            string body;
     };
 
 #endif
